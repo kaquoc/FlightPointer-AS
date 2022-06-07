@@ -39,7 +39,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
-public class SecondFragment extends Fragment {
+public class SecondFragment extends Fragment implements OnMapReadyCallback {
 
     //a Java public class that make use of GPS location and network location.
 
@@ -60,6 +60,9 @@ public class SecondFragment extends Fragment {
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+        SupportMapFragment mapFragment = (SupportMapFragment) getActivity().getSupportFragmentManager()
+                .findFragmentById(R.id.google_map);
+        mapFragment.getMapAsync(this);
 
 
 
@@ -98,8 +101,7 @@ public class SecondFragment extends Fragment {
         thread.start();
 
         /**Google Map View API key: AIzaSyCkIYQVZEDnnqoL3v-biK87kcECWRHRNfo   */
-        SupportMapFragment supportMapFragment= (SupportMapFragment)
-                getChildFragmentManager().findFragmentById(R.id.google_map);
+
 
 
 

@@ -84,10 +84,6 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
 
 
-        Fragment fragment=new SecondFragment();
-        getSupportFragmentManager()
-                .beginTransaction().replace(R.id.frame_layout,fragment)
-                .commit();
 
 
 
