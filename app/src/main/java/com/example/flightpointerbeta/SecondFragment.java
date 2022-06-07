@@ -23,7 +23,13 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.flightpointerbeta.databinding.FragmentSecondBinding;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 
@@ -46,11 +52,16 @@ public class SecondFragment extends Fragment {
     TextView TVlattitude;
 
     TextView tvFlight;
+
+    MapView MVmapView;
+    GoogleMap map;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState
     ) {
+
+
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -87,6 +98,9 @@ public class SecondFragment extends Fragment {
         thread.start();
 
         /**Google Map View API key: AIzaSyCkIYQVZEDnnqoL3v-biK87kcECWRHRNfo   */
+        SupportMapFragment supportMapFragment= (SupportMapFragment)
+                getChildFragmentManager().findFragmentById(R.id.google_map);
+
 
 
 
@@ -106,7 +120,15 @@ public class SecondFragment extends Fragment {
         super.onDestroyView();
         binding = null;
     }
-    Thread thread = new Thread(new Runnable() {
+
+
+
+
+
+
+
+
+        Thread thread = new Thread(new Runnable() {
         @Override
         public void run() {
             try  {
@@ -133,8 +155,6 @@ public class SecondFragment extends Fragment {
             }
         }
     });
-
-
 
 
 
