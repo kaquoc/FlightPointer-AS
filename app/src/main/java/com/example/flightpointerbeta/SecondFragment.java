@@ -98,7 +98,9 @@ public class SecondFragment extends Fragment {
          */
         thread.start();
 
-        /**Google Map View API key: AIzaSyCkIYQVZEDnnqoL3v-biK87kcECWRHRNfo   */
+        /**Implementing Google Service map API, API key is in Note*/
+
+
 
 
 
