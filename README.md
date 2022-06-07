@@ -10,17 +10,21 @@ All flight data is provided by https://www.adsbexchange.com/ through RapidAPI.
 
 User can entered their desired search radius. (NOT working under current ADSBx Flight Sim Traffic version). Only ADSBx Flight Sim Traffic version 2 (paid plan) works.
 
+Also because I really like aviation and aviation tracking!
+
 
 ## Learning goals
 The purpose of creating this app is to:
 - Improve upon my OOP Java skills and its real-world application.
-- Learn how to handle receiving HTTP requests, in this case, handling RapidAPI and OKHTTP3 requests.
-  - https://square.github.io/okhttp/
-  - https://rapidapi.com/adsbx/api/adsbx-flight-sim-traffic/
+- Learn and familiarise with the use of API and HTTP requests
+  - OKHTTP3 https://square.github.io/okhttp/
+  - Absdbx Flight Tracking API: https://rapidapi.com/adsbx/api/adsbx-flight-sim-traffic/
+  - Google Services Map
 - Managing and understanding dependancies with Android Studio and Gradle.
+  - Depandancies uses: okhttp3, google services location/map, google json. 
 - Plan and implement product development process.
 - Understand the basics of an Android Application.
-- Develop and familiaries with usage of Git and GitHub
+- Familiaries with usage of Git and GitHub through an IDE.
 
 
 
