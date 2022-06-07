@@ -8,6 +8,8 @@ Android studio app
 FlightPointer provides a simple app that displays the name and location of the aircraft nearest to the user's longitude and lattitude.
 All flight data is provided by https://www.adsbexchange.com/ through RapidAPI.
 
+User can entered their desired search radius. (NOT working under current ADSBx Flight Sim Traffic version). Only ADSBx Flight Sim Traffic version 2 (paid plan) works.
+
 
 ## Learning goals
 The purpose of creating this app is to:
