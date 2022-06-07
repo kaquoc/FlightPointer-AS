@@ -70,6 +70,12 @@ public class SecondFragment extends Fragment implements OnMapReadyCallback {
         return binding.getRoot();
 
     }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        googleMap.addMarker(new MarkerOptions()
+                .position(new LatLng(MainActivity.lat, MainActivity.longi))
+                .title("Marker"));
+    }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
