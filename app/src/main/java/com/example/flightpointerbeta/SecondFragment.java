@@ -23,17 +23,9 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.flightpointerbeta.databinding.FragmentSecondBinding;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.mashape.unirest.http.exceptions.UnirestException;
-/*
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationCallback;
-import com.google.android.gms.location.LocationRequest;
-import com.google.android.gms.location.LocationResult;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.mashape.unirest.http.exceptions.UnirestException;
- */
+
 
 
 import org.json.JSONArray;
@@ -93,6 +85,10 @@ public class SecondFragment extends Fragment {
          * operations
          */
         thread.start();
+
+        /**Google Map View API key: AIzaSyCkIYQVZEDnnqoL3v-biK87kcECWRHRNfo   */
+
+
 
 
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {

@@ -7,7 +7,7 @@
     <string name="submit">submit</string>
     <string name="previous">Previous</string>
 
-    <string name="welcome_first">Welcome to FlightPointer</string>
+    <string name="welcome_first">FlightPointer</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="radius_instruction">You can enter the area radius here</string>
 </resources>
