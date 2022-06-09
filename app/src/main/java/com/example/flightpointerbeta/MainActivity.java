@@ -147,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                         if (location == null) {
                             requestNewLocationData();
                         } else {
+                            requestNewLocationData();
                             lat = location.getLatitude();
                             longi = location.getLongitude();
                         }
