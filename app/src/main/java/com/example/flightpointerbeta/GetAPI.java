@@ -57,15 +57,15 @@ public class GetAPI {
          * We can find the closest aircraft based on long-lat of current location and aircraft location
          * using the Haversine formula
          * */
-        double max = 0.0;
+        double min = 0.0;
         int near_index = 0;
         while (i <= 20){
             JSONObject obj = ac2.getJSONObject(i);
             double lat1 =  Double.parseDouble(obj.getString("lat"));
             double long1= Double.parseDouble(obj.getString("lon"));
             double distance = findDistance(lat1,long1);
-            if (distance > max){
-                max = distance;
+            if (distance < min){
+                min = distance;
                 near_index = i;
             }
             i++;
