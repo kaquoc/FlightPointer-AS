@@ -41,7 +41,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 
-public class SecondFragment extends Fragment implements OnMapReadyCallback {
+public class SecondFragment extends Fragment{
 
     //a Java public class that make use of GPS location and network location.
 
@@ -65,16 +65,6 @@ public class SecondFragment extends Fragment implements OnMapReadyCallback {
             Bundle savedInstanceState
     ) {
         /**Implementing Google Service map API, API key is in Note*/
-        View view = inflater.inflate(R.layout.fragment_second, container, false);
-        Bundle mapviewbundle = null;
-        if (savedInstanceState != null){
-            mapviewbundle = savedInstanceState.getBundle("MapViewBundleKey");
-        }
-        MVmapView =view.findViewById(R.id.mapView);
-        //initGoogleMap(savedInstanceState);
-        //return view;
-
-
 
         binding = FragmentSecondBinding.inflate(inflater, container, false);
         return binding.getRoot();
@@ -82,19 +72,7 @@ public class SecondFragment extends Fragment implements OnMapReadyCallback {
 
 
     }
-    private void initGoogleMap(Bundle savedInstanceState){
-        // *** IMPORTANT ***
-        // MapView requires that the Bundle you pass contain _ONLY_ MapView SDK
-        // objects or sub-Bundles.
-        Bundle mapViewBundle = null;
-        if (savedInstanceState != null) {
-            mapViewBundle = savedInstanceState.getBundle("MapViewBundleKey");
-        }
 
-        MVmapView.onCreate(mapViewBundle);
-
-        MVmapView.getMapAsync(this);
-    }
 
 
 
@@ -180,82 +158,5 @@ public class SecondFragment extends Fragment implements OnMapReadyCallback {
         }
     });
 
-    /**Forwarded methods for MapView*/
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        MVmapView.onCreate(savedInstanceState);
-    }
 
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-
-        Bundle mapViewBundle = outState.getBundle("MapViewBundleKey");
-        if (mapViewBundle == null) {
-            mapViewBundle = new Bundle();
-            outState.putBundle("MapViewBundleKey", mapViewBundle);
-        }
-
-        MVmapView.onSaveInstanceState(mapViewBundle);
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        MVmapView.onResume();
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        MVmapView.onStart();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        MVmapView.onStop();
-    }
-
-    @Override
-    public void onMapReady(GoogleMap map) {
-        if (ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getActivity(), Manifest.permission.ACCESS_COARSE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }else{
-            ActivityCompat.requestPermissions(getActivity(), new String[]{
-                    Manifest.permission.ACCESS_COARSE_LOCATION,
-                    Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSION_ID);
-        }
-        //map.setMyLocationEnabled(true);
-    }
-
-    @Override
-    public void onPause() {
-        MVmapView.onPause();
-        super.onPause();
-    }
-
-    @Override
-    public void onDestroy() {
-        MVmapView.onDestroy();
-        super.onDestroy();
-    }
-
-    @Override
-    public void onLowMemory() {
-        super.onLowMemory();
-        MVmapView.onLowMemory();
-    }
 }

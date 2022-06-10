@@ -51,15 +51,37 @@ public class GetAPI {
 
         JSONObject ac = new JSONObject(prettyJson);
         JSONArray ac2 = ac.getJSONArray("ac");
-        //System.out.println(ac2.getJSONObject(1).getString("call"));
-        //returning nearest aircraft callsign
         int i = 0;
-        while (ac2.getJSONObject(i).getString("call").equals("")){
+
+        /**This does not return the closest aircraft
+         * We can find the closest aircraft based on long-lat of current location and aircraft location
+         * using the Haversine formula
+         * */
+        double max = 0.0;
+        int near_index = 0;
+        while (i <= 20){
+            JSONObject obj = ac2.getJSONObject(i);
+            double lat1 =  Double.parseDouble(obj.getString("lat"));
+            double long1= Double.parseDouble(obj.getString("lon"));
+            double distance = findDistance(lat1,long1);
+            if (distance > max){
+                max = distance;
+                near_index = i;
+            }
             i++;
         }
-        return ac2.getJSONObject(i).getString("call");
+
+        return ac2.getJSONObject(near_index).getString("call");
 
 
+    }
+    /***Haversine formula for finding distance between two location based on longitude and latitude*/
+    public double findDistance(double lat1, double long1){
+        double lat2 = MainActivity.lat;
+        double long2 = MainActivity.longi;
+        double p = 0.017453292519943295;
+        double distance = 0.5 - Math.cos((lat1 - lat2)*p)/2 + Math.cos(lat1*p)*Math.cos(lat2*p) + (1-Math.cos((long1-long2)*p))/2;
+        return 12742*Math.asin(Math.sqrt(distance));
     }
 
 

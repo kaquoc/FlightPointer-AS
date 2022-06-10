@@ -9,6 +9,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.flightpointerbeta.databinding.FragmentFirstBinding;
@@ -61,12 +63,14 @@ public class FirstFragment extends Fragment {
 
                     // need to add guard to check if user input is valid
                     if ((radius > 0 && radius <= 25)) {
+
                         FirstFragmentDirections.ActionFirstFragmentToSecondFragment action =
                                 FirstFragmentDirections.actionFirstFragmentToSecondFragment(radius);
 
                         //transition between first fragment to second fragment.
                         NavHostFragment.findNavController(FirstFragment.this)
-                                .navigate(action);
+                               .navigate(action);
+
                     } else {
                         Snackbar.make(view, "invalid radius, please choose radius between 0 and 25", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
