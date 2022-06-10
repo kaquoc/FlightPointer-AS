@@ -57,14 +57,16 @@ public class GetAPI {
          * We can find the closest aircraft based on long-lat of current location and aircraft location
          * using the Haversine formula
          * */
-        double min = 0.0;
+        double min = Double.MAX_VALUE;
         int near_index = 0;
         while (i <= 20){
             JSONObject obj = ac2.getJSONObject(i);
             double lat1 =  Double.parseDouble(obj.getString("lat"));
             double long1= Double.parseDouble(obj.getString("lon"));
-            double distance = findDistance(lat1,long1);
-            if (distance < min){
+            double distance = haversine(lat1,long1, MainActivity.lat, MainActivity.longi);
+            if (distance < min && obj.getString("call").equals("") == false &&
+                    (!obj.getString("spd").equals("") && Double.parseDouble(obj.getString("spd")) > 10)){
+
                 min = distance;
                 near_index = i;
             }
@@ -75,13 +77,29 @@ public class GetAPI {
 
 
     }
-    /***Haversine formula for finding distance between two location based on longitude and latitude*/
-    public double findDistance(double lat1, double long1){
-        double lat2 = MainActivity.lat;
-        double long2 = MainActivity.longi;
-        double p = 0.017453292519943295;
-        double distance = 0.5 - Math.cos((lat1 - lat2)*p)/2 + Math.cos(lat1*p)*Math.cos(lat2*p) + (1-Math.cos((long1-long2)*p))/2;
-        return 12742*Math.asin(Math.sqrt(distance));
+    /***Haversine formula for finding distance between two location based on longitude and latitude
+     * https://en.wikipedia.org/wiki/Haversine_formula
+     * */
+
+    public double haversine(double lat1, double lon1,
+                            double lat2, double lon2)
+    {
+        // Haversine formula uses radian cause it's related with angles
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+
+        // convert to radians
+        lat1 = Math.toRadians(lat1);
+        lat2 = Math.toRadians(lat2);
+
+        // apply formulae
+        double a = Math.pow(Math.sin(dLat / 2), 2) +
+                Math.pow(Math.sin(dLon / 2), 2) *
+                        Math.cos(lat1) *
+                        Math.cos(lat2);
+        double rad = 6371;
+        double c = 2 * Math.asin(Math.sqrt(a));
+        return rad * c;
     }
 
 
