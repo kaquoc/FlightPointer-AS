@@ -36,7 +36,7 @@ public class GetAPI {
         this.longi = longi;
     }
 
-    private String processJSON(String prettyJson) throws JSONException {
+    private JSONObject processJSON(String prettyJson) throws JSONException {
         /**Current JSON format:
          *          {"ac": [{aircraft 1}, {aircraft2},...,{aircraftN}],
          *                  "total": __,
@@ -73,7 +73,7 @@ public class GetAPI {
             i++;
         }
 
-        return ac2.getJSONObject(near_index).getString("call");
+        return ac2.getJSONObject(near_index);
 
 
     }
@@ -107,7 +107,7 @@ public class GetAPI {
      * Using OKHTTP instead of UNIREST, unirest crashes app.
      * **/
     //getting data from ADSBX using the user-entered radius.
-    public String getJSON() throws UnirestException, JSONException, IOException {
+    public JSONObject getJSON() throws UnirestException, JSONException, IOException {
 
         OkHttpClient client = new OkHttpClient();
 

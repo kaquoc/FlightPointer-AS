@@ -17,6 +17,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 
 import org.json.JSONException;
+import org.json.JSONObject;
 
 
 public class SecondFragment extends Fragment{
@@ -26,12 +27,14 @@ public class SecondFragment extends Fragment{
 
     private FragmentSecondBinding binding;
     private GetAPI api;
-    String nearest_aircraft;
+    JSONObject nearest_aircraft;
 
     TextView TVlongtitude;
     TextView TVlattitude;
 
-    TextView tvFlight;
+    TextView flight_callsign;
+    TextView flight_reg;
+    TextView flight_type;
 
     MapView MVmapView;
 
@@ -72,9 +75,11 @@ public class SecondFragment extends Fragment{
          * From there we can call RESTAPI to get aircraft in the vicinity.
          * **/
 
-        tvFlight= view.findViewById(R.id.call_sign);
+        flight_callsign = view.findViewById(R.id.call_sign);
+        flight_reg = view.findViewById(R.id.reg);
+        flight_type = view.findViewById(R.id.aircraft_type);
         this.api = new GetAPI(25,MainActivity.lat, MainActivity.longi);
-        this.nearest_aircraft = "";
+        this.nearest_aircraft = new JSONObject();
 
         /** we cannot perform network operation on the main thread, because of
          * “android.os.Network On Main Thread Exception error”
@@ -115,20 +120,22 @@ public class SecondFragment extends Fragment{
                 try {
                     nearest_aircraft = api.getJSON();
                 } catch (UnirestException e) {
-                    nearest_aircraft = "API call failed1";
+
                     Toast.makeText(getActivity(), "API call failed1", Toast.LENGTH_LONG).show();
                 } catch (JSONException e) {
-                    nearest_aircraft = "API call failed2";
+
                     Toast.makeText(getActivity(), "API call failed2", Toast.LENGTH_LONG).show();
                 } catch (Exception e){
-                    nearest_aircraft = e.toString();
+
                     Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                 }
 
                 if (nearest_aircraft.equals("")){
-                    tvFlight.setText("blank");
+                    flight_callsign.setText("blank");
                 }else{
-                    tvFlight.setText(nearest_aircraft);
+                    flight_callsign.setText(nearest_aircraft.getString("call"));
+                    flight_reg.setText(nearest_aircraft.getString("reg"));
+                    flight_type.setText(nearest_aircraft.getString("type"));
                 }
             } catch (Exception e) {
                 e.printStackTrace();

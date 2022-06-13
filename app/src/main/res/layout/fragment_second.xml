@@ -67,29 +67,39 @@
 
     <TextView
         android:id="@+id/call_sign"
-        android:layout_width="108dp"
-        android:layout_height="48dp"
+        android:layout_width="106dp"
+        android:layout_height="36dp"
         android:text="ac_call_sign"
         android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/reg"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radius_fragment2"
-        app:layout_constraintVertical_bias="0.917" />
+        app:layout_constraintVertical_bias="0.362" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/reg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="icao"
+        android:text="registration"
         android:textAlignment="center"
         app:layout_constraintBottom_toTopOf="@+id/Longitude"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/radius_fragment2"
-        app:layout_constraintVertical_bias="0.865" />
+        app:layout_constraintVertical_bias="0.576" />
+
+    <TextView
+        android:id="@+id/aircraft_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ac type"
+        app:layout_constraintBottom_toTopOf="@+id/Longitude"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
