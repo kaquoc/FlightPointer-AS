@@ -28,7 +28,7 @@ public class SecondFragment extends Fragment{
 
     private FragmentSecondBinding binding;
     private GetAPI api;
-    JSONObject nearest_aircraft;
+    Aircraft nearest_aircraft;
 
     TextView TVlongtitude;
     TextView TVlattitude;
@@ -84,7 +84,7 @@ public class SecondFragment extends Fragment{
 
 
         this.api = new GetAPI(25,MainActivity.lat, MainActivity.longi);
-        this.nearest_aircraft = new JSONObject();
+
 
         /** we cannot perform network operation on the main thread, because of
          * “android.os.Network On Main Thread Exception error”
@@ -138,7 +138,7 @@ public class SecondFragment extends Fragment{
                 if (nearest_aircraft.equals("")){
                     flight_callsign.setText("blank");
                 }else{
-                    flight_callsign.setText("aircraft callsign: " + nearest_aircraft.getString("call"));
+                    flight_callsign.setText("aircraft callsign: " + nearest_aircraft.ac_callsign);
                     flight_reg.setText("aircraft registration "+ nearest_aircraft.getString("reg"));
                     flight_type.setText("aircraft type: "+ nearest_aircraft.getString("type"));
                     double dist = api.haversine(MainActivity.lat,MainActivity.longi,
