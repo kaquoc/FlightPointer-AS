@@ -72,7 +72,7 @@ public class GetAPI {
             }
             i++;
         }
-        Aircraft ans = new Aircraft(ac2.getJSONObject(near_index));
+        Aircraft ans = new Aircraft(ac2.getJSONObject(near_index),min);
         return ans;
 
 

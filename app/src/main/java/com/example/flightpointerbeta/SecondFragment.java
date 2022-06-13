@@ -138,13 +138,13 @@ public class SecondFragment extends Fragment{
                 if (nearest_aircraft.equals("")){
                     flight_callsign.setText("blank");
                 }else{
-                    flight_callsign.setText("aircraft callsign: " + nearest_aircraft.ac_callsign);
-                    flight_reg.setText("aircraft registration "+ nearest_aircraft.getString("reg"));
-                    flight_type.setText("aircraft type: "+ nearest_aircraft.getString("type"));
+                    flight_callsign.setText("aircraft callsign: " + nearest_aircraft.getAc_callsign());
+                    flight_reg.setText("aircraft registration "+ nearest_aircraft.getAc_reg());
+                    flight_type.setText("aircraft type: "+ nearest_aircraft.getAc_type());
                     double dist = api.haversine(MainActivity.lat,MainActivity.longi,
-                            Double.parseDouble(nearest_aircraft.getString("lat")),
-                            Double.parseDouble(nearest_aircraft.getString("lon")));
-                    distance.setText("aircraft distance to you: " + dist + " km");
+                            nearest_aircraft.getAc_lat(),
+                           nearest_aircraft.getAc_long());
+                    distance.setText("aircraft distance to you: " + nearest_aircraft.distance_to_user() + " km");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
