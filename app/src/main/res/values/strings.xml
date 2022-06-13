@@ -10,4 +10,6 @@
     <string name="welcome_first">FlightPointer</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="radius_instruction">You can enter the area radius here</string>
+    <string name="description">FlightPointer display the closest aircraft to your current location
+                                using third-party flight traffic data.</string>
 </resources>

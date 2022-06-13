@@ -79,6 +79,7 @@ public class GetAPI {
     }
     /***Haversine formula for finding distance between two location based on longitude and latitude
      * https://en.wikipedia.org/wiki/Haversine_formula
+     * return unit kilometer
      * */
 
     public double haversine(double lat1, double lon1,

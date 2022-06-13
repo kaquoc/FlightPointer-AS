@@ -18,6 +18,7 @@ import com.mashape.unirest.http.exceptions.UnirestException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 
 public class SecondFragment extends Fragment{
@@ -35,6 +36,7 @@ public class SecondFragment extends Fragment{
     TextView flight_callsign;
     TextView flight_reg;
     TextView flight_type;
+    TextView distance;
 
     MapView MVmapView;
 
@@ -78,6 +80,9 @@ public class SecondFragment extends Fragment{
         flight_callsign = view.findViewById(R.id.call_sign);
         flight_reg = view.findViewById(R.id.reg);
         flight_type = view.findViewById(R.id.aircraft_type);
+        distance = view.findViewById(R.id.distance);
+
+
         this.api = new GetAPI(25,MainActivity.lat, MainActivity.longi);
         this.nearest_aircraft = new JSONObject();
 
@@ -133,9 +138,13 @@ public class SecondFragment extends Fragment{
                 if (nearest_aircraft.equals("")){
                     flight_callsign.setText("blank");
                 }else{
-                    flight_callsign.setText(nearest_aircraft.getString("call"));
-                    flight_reg.setText(nearest_aircraft.getString("reg"));
-                    flight_type.setText(nearest_aircraft.getString("type"));
+                    flight_callsign.setText("aircraft callsign: " + nearest_aircraft.getString("call"));
+                    flight_reg.setText("aircraft registration "+ nearest_aircraft.getString("reg"));
+                    flight_type.setText("aircraft type: "+ nearest_aircraft.getString("type"));
+                    double dist = api.haversine(MainActivity.lat,MainActivity.longi,
+                            Double.parseDouble(nearest_aircraft.getString("lat")),
+                            Double.parseDouble(nearest_aircraft.getString("lon")));
+                    distance.setText("aircraft distance to you: " + dist + " km");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
