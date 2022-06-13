@@ -1,15 +1,6 @@
 package com.example.flightpointerbeta;
 
-import android.Manifest;
-import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.os.Looper;
-import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,28 +8,15 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.flightpointerbeta.databinding.FragmentSecondBinding;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
 
-
-import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 
 public class SecondFragment extends Fragment{
@@ -94,7 +72,7 @@ public class SecondFragment extends Fragment{
          * From there we can call RESTAPI to get aircraft in the vicinity.
          * **/
 
-        tvFlight= view.findViewById(R.id.Flight);
+        tvFlight= view.findViewById(R.id.call_sign);
         this.api = new GetAPI(25,MainActivity.lat, MainActivity.longi);
         this.nearest_aircraft = "";
 
