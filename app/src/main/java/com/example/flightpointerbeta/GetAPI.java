@@ -64,8 +64,7 @@ public class GetAPI {
             double lat1 =  Double.parseDouble(obj.getString("lat"));
             double long1= Double.parseDouble(obj.getString("lon"));
             double distance = haversine(lat1,long1, MainActivity.lat, MainActivity.longi);
-            if (distance < min && obj.getString("call").equals("") == false &&
-                    (!obj.getString("spd").equals("") && Double.parseDouble(obj.getString("spd")) > 10)){
+            if (distance < min && obj.getString("call").equals("") == false ){
 
                 min = distance;
                 near_index = i;
