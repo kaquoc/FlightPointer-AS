@@ -16,9 +16,9 @@ class Aircraft {
     public Aircraft(JSONObject aircraft,double di) {
         try{
             ac_callsign = aircraft.getString("call");
-            ac_icao = aircraft.getString("icao");
-            ac_reg = aircraft.getString("reg");
-            ac_type = aircraft.getString("type");
+            ac_icao =  aircraft.getString("icao").equals("") ? "unavailable" :aircraft.getString("icao") ;
+            ac_reg = aircraft.getString("reg").equals("") ? "unavailable" :aircraft.getString("reg") ;
+            ac_type = aircraft.getString("type").equals("") ? "unavailable" :aircraft.getString("type") ;
             ac_lat  = Double.parseDouble(aircraft.getString("lat"));
             ac_long = Double.parseDouble(aircraft.getString("lon"));
             dist = di;

@@ -34,11 +34,9 @@ public class SecondFragment extends Fragment{
     TextView TVlattitude;
 
     TextView flight_callsign;
-    TextView flight_reg;
-    TextView flight_type;
-    TextView distance;
 
-    MapView MVmapView;
+
+
 
     int PERMISSION_ID = 44;
 
@@ -78,9 +76,7 @@ public class SecondFragment extends Fragment{
          * **/
 
         flight_callsign = view.findViewById(R.id.call_sign);
-        flight_reg = view.findViewById(R.id.reg);
-        flight_type = view.findViewById(R.id.aircraft_type);
-        distance = view.findViewById(R.id.distance);
+
 
 
         this.api = new GetAPI(25,MainActivity.lat, MainActivity.longi);
@@ -139,12 +135,11 @@ public class SecondFragment extends Fragment{
                     flight_callsign.setText("blank");
                 }else{
                     flight_callsign.setText("aircraft callsign: " + nearest_aircraft.getAc_callsign());
-                    flight_reg.setText("aircraft registration "+ nearest_aircraft.getAc_reg());
-                    flight_type.setText("aircraft type: "+ nearest_aircraft.getAc_type());
+
                     double dist = api.haversine(MainActivity.lat,MainActivity.longi,
                             nearest_aircraft.getAc_lat(),
                            nearest_aircraft.getAc_long());
-                    distance.setText("aircraft distance to you: " + nearest_aircraft.distance_to_user() + " km");
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
