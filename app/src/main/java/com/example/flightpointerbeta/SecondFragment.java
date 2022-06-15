@@ -34,6 +34,8 @@ public class SecondFragment extends Fragment{
     TextView TVlattitude;
 
     TextView flight_callsign;
+    TextView TVicao;
+    TextView TVtype;
 
 
 
@@ -76,7 +78,8 @@ public class SecondFragment extends Fragment{
          * **/
 
         flight_callsign = view.findViewById(R.id.call_sign);
-
+        TVicao = view.findViewById(R.id.icao);
+        TVtype = view.findViewById(R.id.type);
 
 
         this.api = new GetAPI(25,MainActivity.lat, MainActivity.longi);
@@ -131,16 +134,14 @@ public class SecondFragment extends Fragment{
                     Toast.makeText(getActivity(), e.toString(), Toast.LENGTH_LONG).show();
                 }
 
-                if (nearest_aircraft.equals("")){
-                    flight_callsign.setText("blank");
-                }else{
-                    flight_callsign.setText("aircraft callsign: " + nearest_aircraft.getAc_callsign());
-
-                    double dist = api.haversine(MainActivity.lat,MainActivity.longi,
+                flight_callsign.setText("aircraft callsign: " + nearest_aircraft.getAc_callsign());
+                TVicao.setText("aircraft icao: " + nearest_aircraft.getAc_icao());
+                TVtype.setText("aircraft type: " + nearest_aircraft.getAc_type());
+                double dist = api.haversine(MainActivity.lat,MainActivity.longi,
                             nearest_aircraft.getAc_lat(),
                            nearest_aircraft.getAc_long());
 
-                }
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
